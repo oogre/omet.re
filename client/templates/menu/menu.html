@@ -1,0 +1,14 @@
+<template name="menuMenu">
+	<ul>
+		<li>
+			<button class="newPaper">
+				New paper
+			</button>
+		</li>
+		{{#each boards}}
+		<li id="{{_id}}">
+			<a href="{{pathFor route='board' boardName=name}}">{{name}}</a>
+		</li>
+		{{/each}}
+	</ul>
+</template>

@@ -1,0 +1,18 @@
+
+<template name="writtingArea">
+	<div class="writtingArea" id="{{_id}}" style="left:{{location.x}}px;top:{{location.y}}px">
+		<ul class="writtingTools">
+			<li>
+				<button class="sizer">
+					<i class="fa fa-font fa-xl"></i>
+				</button>
+			</li>
+			<li>
+				<button class="colorizer">
+					<i class="fa fa-paint-brush fa-xl red"></i>
+				</button>
+			</li>
+		</ul>
+		<textarea cols="{{size.cols}}" rows="{{size.rows}}" class="{{fontColor}} {{fontSize}}">{{content}}</textarea>
+	</div>
+</template>

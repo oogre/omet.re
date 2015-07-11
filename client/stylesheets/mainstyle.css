@@ -1,0 +1,107 @@
+html{
+	background: #333;
+}
+
+html, 
+body, 
+section{
+	width: 3000px;
+	height: 4241px;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+}
+.container{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+body{
+	background: #fff;
+	border: solid 100px #333;
+}
+
+.writtingArea{
+	position:absolute;
+	margin-top: -35px;
+}
+.writtingArea textarea{
+	overflow: hidden;
+	border: none;
+	resize:none;
+	color: #000;
+	font-size: 1em;
+	background-color: transparent;
+	padding-top : 10px;
+}
+.writtingArea:not(.edition) .writtingTools{
+	display: none;
+}
+.writtingArea:not(.edition){
+	margin-top: -13px;
+}
+
+.writtingArea textarea.font-large{
+	font-size: 2em;	
+}
+.writtingArea textarea.font-larger{
+	font-size: 3em;
+}
+.writtingArea textarea.font-largest{
+	font-size: 4em;
+}
+
+.writtingArea textarea.red,
+.red{
+	color: red;
+}
+.writtingArea textarea.orange,
+.orange{
+	color: orange;
+}
+.writtingArea textarea.green,
+.green{
+	color: lightgreen;
+}
+.writtingArea textarea.turquoise,
+.turquoise{
+	color: turquoise;
+}
+.writtingArea textarea.blue,
+.blue{
+	color: blue;
+}
+.writtingArea textarea.magenta,
+.magenta{
+	color: magenta;
+}
+.fa-xl {
+    font-size: 1.66666em;
+}
+
+.writtingArea ul.writtingTools{
+	padding: 0;
+	width: 100px;
+	margin: 0;
+	border-bottom: dotted 1px #000;	
+}
+
+.writtingArea ul.writtingTools:after{
+	clear: both;
+	content: "";
+	display: block;
+}
+.writtingArea .writtingTools li {
+	float: left;
+	margin: 0 5px;
+	list-style-type: none;
+}
+
+.writtingArea .writtingTools li button{
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
