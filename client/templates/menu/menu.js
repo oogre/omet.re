@@ -29,6 +29,11 @@ Template.menuMenu.events({
 
 Template.menuMenu.helpers({
 	boards : function(){
-		return Boards.find();
+		return Boards.find({}, {
+			sort : {
+				createdAt : -1,
+				name : 1
+			}
+		});
 	}
 });

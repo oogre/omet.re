@@ -8,6 +8,8 @@ section{
 	width: 3000px;
 	height: 4241px;
 	font-size: 12px;
+	font-family: monospace;
+	font-weight: 200;
 	padding: 0;
 	margin: 0;
 }
@@ -19,12 +21,31 @@ section{
 }
 body{
 	background: #fff;
-	border: solid 100px #333;
+	border: solid 50px #333;
 }
+header{
+	position: absolute;
+	z-index: 1000;
+	margin: -5px 3px;
+	cursor: pointer;
+}
+h1, h4{
+	font-weight: 200;
+}
+h1{
+	color: blue;
+	font-size: 6em;
+	margin: 0;
+}
+h4{
+	margin: 0;
+	word-spacing: 0.04em;
+}
+
 
 .writtingArea{
 	position:absolute;
-	margin-top: -35px;
+	margin-top: -36px;
 }
 .writtingArea textarea{
 	overflow: hidden;
@@ -34,6 +55,7 @@ body{
 	font-size: 1em;
 	background-color: transparent;
 	padding-top : 10px;
+	margin-top: -1px;
 }
 .writtingArea:not(.edition) .writtingTools{
 	display: none;
@@ -62,7 +84,7 @@ body{
 }
 .writtingArea textarea.green,
 .green{
-	color: lightgreen;
+	color: green;
 }
 .writtingArea textarea.turquoise,
 .turquoise{
@@ -104,4 +126,41 @@ body{
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+}
+ul#mainMenu {
+	padding: 0;
+	margin: 110px 0px 0px 10px;
+}
+ul#mainMenu>li{
+	margin: 20px 0;
+	list-style-type: none;
+}
+ul#mainMenu button.newPaper:hover{
+	border: solid 1px green;
+	color: green;
+}
+ul#mainMenu button.newPaper{
+	padding: 10px;
+	display: block;
+	border: solid 1px red;
+	background-color: white;
+	color: red;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+ul#pageList{
+	padding: 0 20px;
+}
+ul#pageList li{
+	margin: 3px 0;
+}
+ul#pageList a{
+	text-decoration: none;
+	color : #3C3C3C;
+	padding: 0 10px;
+}
+
+ul#mainMenu li a:hover{
+	border-bottom: solid 1px red;
 }

@@ -1,14 +1,19 @@
 <template name="menuMenu">
-	<ul>
+	<ul id="mainMenu">
 		<li>
 			<button class="newPaper">
-				New paper
+				Ouvrir une page
 			</button>
 		</li>
-		{{#each boards}}
-		<li id="{{_id}}">
-			<a href="{{pathFor route='board' boardName=name}}">{{name}}</a>
+		<li>
+			Liste des pages :
+			<ul id="pageList">
+				{{#each boards}}
+				<li id="{{_id}}">
+					<a href="{{pathFor route='board' boardName=name}}">{{name}}</a>
+				</li>
+				{{/each}}
+			</ul>
 		</li>
-		{{/each}}
 	</ul>
 </template>

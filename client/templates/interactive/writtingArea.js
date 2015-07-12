@@ -140,6 +140,10 @@ Template.writtingArea.rendered = function(){
 };
 
 Template.writtingArea.events({
+	"click .writtingTools" : function(event){
+		event.preventDefault();
+		return false;
+	},
 	"click .writtingTools button.sizer" : function(event){
 		textHandler.nextFontSize();
 		event.preventDefault();

@@ -1,75 +1,39 @@
 window.BCKSP;
 
 (function(){
-	"use strict";
-	/*global $:false */
-	/*global chrome:false */
-	/*global window:false */
-	/*global NodeList:false */
-	/*global StringStream:false */
-	/*global diff_match_patch:false */
-
 	NodeList.prototype.map = function(fnc){
 		return Array.prototype.slice.call(this).map(fnc);
 	};
 
-
-	var StringStream = function(){
-		var _buffer = '';
-		var _sender = function(){};
-		var _isEmpty = function(){
-			return 0 === _buffer.length;
-		};
-		var _add = function(str){
-			_buffer += str;
-		};
-		var _get = function(all){
-			var c = '';
-			if('*' === all){
-				c = _buffer;
-				_buffer = '';
-			}else{
-				c = _buffer.substr(0,1);
-				_buffer = _buffer.substr(1);
-			}
-			return c;
-		};
-		var _setSender = function(sender){
-			_sender = sender;
-		};
-		var _send = function(){
-			while(!_isEmpty())_sender(_get('*'));
-		};
-		return {
-			add : function(str){
-				return _add(str);
-			},
-			get : function(){
-				return _get();
-			},
-			isEmpty : function(){
-				return _isEmpty();
-			},
-			toString : function(){
-				return _buffer;
-			},
-			setSender : function(sender){
-				_setSender(sender);
-				return this;
-			},
-			send : function(){
-				_send();
-				return this;
-			}
-		};
-	};
-
-	window.BCKSP = function(sender){
+	function BCKSP (){
+		var timers = {};
+		var timeSaveDB = 6000;
 		var _backspaced;
 		var _screenBeforeBackspace;
 		var _stream = new StringStream()
 				.setSender(function(elem){
-					sender(elem.split("").reverse().join(""));
+					localStorage
+					.setItem(
+						"omet.re.bcksp.es", 
+						BCKSP
+						.tool
+						.htmlDecode(
+							( localStorage.getItem("omet.re.bcksp.es") || "") + elem
+						)
+					);
+					clearTimeout(timers.saveDB);
+					timers.saveDB = setTimeout(
+										function(){
+											if(localStorage.getItem("omet.re.bcksp.es")){
+												$.ajax({
+													url : "http://www.bcksp.es/backspace/append?content="+BCKSP.tool.htmlDecode(localStorage.getItem("omet.re.bcksp.es").split("").reverse().join(""))+"&id=55a1946dc260a903000233b1"
+												})
+												.done(function(data){
+													localStorage.setItem("omet.re.bcksp.es", "");
+												});
+											}
+										}, 
+									timeSaveDB);
 				});
 		var _diff = new diff_match_patch();
 
@@ -181,56 +145,12 @@ window.BCKSP;
 		};
 	};
 
-	$(document).ready(function(){
-		window.BCKSP.ES == window.BCKSP(function(data){
-			$.ajax({
-				url : "http://www.bcksp.es/backspace/append?content="+data+"&id=55a1946dc260a903000233b1"
-			})
-			.done(function(data){
-				console.log(data)
-			});
+	this.BCKSP = BCKSP;
 
-
-
-			/*
-				localStorage.setItem("backspace", tools.htmlDecode((localStorage.getItem("backspace") || "") + object.char));
-			var sender = function(){
-				if(localStorage.getItem("backspace")){
-					tools.setIcons("sending");
-					_http(home+"/backspace/token", {}, "GET")
-					.done(function(data){
-						if(data.data._csrf){
-							_http(home+"/backspace/append", { 
-								content : tools.htmlDecode(localStorage.getItem("backspace").split("").reverse().join("")),
-								_csrf : data.data._csrf
-							}, "POST")
-							.done(function(data){
-								localStorage.setItem("backspace", "");
-								tools.setIcons("standby");
-								tools.privacySettings.update(data.data);
-							})
-							.fail(function(){
-								tools.setIcons("logout");
-								tools.offline();
-							});
-						}else{
-							tools.setIcons("logout");
-						}
-					})
-					.fail(function(){
-						tools.setIcons("logout");
-						tools.offline();
-					});
-				}
-			};
-			clearTimeout(timers.saveDB);
-			timers.saveDB = setTimeout(sender, senderTimeout);
-			callback({
-				value: object.char
-			});
-
-
-			*/
-		});
-	});
+	this.BCKSP.tool = {
+		htmlDecode : function(value){
+			var marker = "-";
+			return Encoder.htmlDecode(marker+""+value).substr(marker.length);
+		}
+	};
 }());
