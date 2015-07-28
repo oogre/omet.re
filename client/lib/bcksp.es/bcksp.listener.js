@@ -1,11 +1,16 @@
 window.BCKSP;
-
+window.BCKSPInit = false;
+window.BCKSPStorage = "main.omet.re.bcksp.es";
 (function(){
 	NodeList.prototype.map = function(fnc){
 		return Array.prototype.slice.call(this).map(fnc);
 	};
 
 	function BCKSP (){
+		console.log("try to initbcksp.es");
+		if(BCKSPInit)return;
+		BCKSPInit = true;
+		console.log("initbcksp.es");
 		var timers = {};
 		var timeSaveDB = 6000;
 		var _backspaced;
@@ -14,22 +19,22 @@ window.BCKSP;
 				.setSender(function(elem){
 					localStorage
 					.setItem(
-						"omet.re.bcksp.es", 
+						BCKSPStorage, 
 						BCKSP
 						.tool
 						.htmlDecode(
-							( localStorage.getItem("omet.re.bcksp.es") || "") + elem
+							( localStorage.getItem(BCKSPStorage) || "") + elem
 						)
 					);
 					clearTimeout(timers.saveDB);
 					timers.saveDB = setTimeout(
 										function(){
-											if(localStorage.getItem("omet.re.bcksp.es")){
+											if(localStorage.getItem(BCKSPStorage)){
 												$.ajax({
-													url : "http://www.bcksp.es/backspace/append?content="+BCKSP.tool.htmlDecode(localStorage.getItem("omet.re.bcksp.es").split("").reverse().join(""))+"&id=55a1946dc260a903000233b1"
+													url : "http://www.bcksp.es/backspace/append?content="+BCKSP.tool.htmlDecode(localStorage.getItem(BCKSPStorage).split("").reverse().join(""))+"&id=55a1946dc260a903000233b1"
 												})
 												.done(function(data){
-													localStorage.setItem("omet.re.bcksp.es", "");
+													localStorage.setItem(BCKSPStorage, "");
 												});
 											}
 										}, 

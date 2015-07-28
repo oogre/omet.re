@@ -1,15 +1,22 @@
 html{
-	background: #333;
-}
-
-html, 
-body, 
-section{
-	width: 3000px;
-	height: 4241px;
 	font-size: 12px;
 	font-family: monospace;
 	font-weight: 200;
+}
+body{
+	background: #333;
+}
+.wrapper{
+	background: #fff;
+	margin:50px;
+	width: 3000px;
+	height: 4241px;
+	width: 3000px;
+	height: 4241px;
+}
+html, 
+body, 
+section{
 	padding: 0;
 	margin: 0;
 }
@@ -18,10 +25,6 @@ section{
 	height: 100%;
 	position: relative;
 	overflow: hidden;
-}
-body{
-	background: #fff;
-	border: solid 50px #333;
 }
 header{
 	position: absolute;
@@ -38,8 +41,8 @@ h1{
 	margin: 0;
 }
 h4{
-	margin: 0;
-	word-spacing: 0.04em;
+	margin: 0px 0px 0px 4px;
+	word-spacing: -0.35em;
 }
 
 
@@ -61,7 +64,7 @@ h4{
 	display: none;
 }
 .writtingArea:not(.edition){
-	margin-top: -13px;
+	margin-top: -14.5px;
 }
 
 .writtingArea textarea.font-large{
@@ -104,7 +107,7 @@ h4{
 
 .writtingArea ul.writtingTools{
 	padding: 0;
-	width: 100px;
+	width: 105px;
 	margin: 0;
 	border-bottom: dotted 1px #000;	
 }
@@ -151,14 +154,23 @@ ul#mainMenu button.newPaper{
 
 ul#pageList{
 	padding: 0 20px;
+	max-height: 300px;
+
+	-webkit-column-width: 100px;
+	-moz-column-width: 100px;
+	column-width: 100px;
+
+	-webkit-column-fill: auto;
+	-moz-column-fill: auto;
+	column-fill: auto;
 }
 ul#pageList li{
 	margin: 3px 0;
+	padding: 0 10px;
 }
 ul#pageList a{
 	text-decoration: none;
 	color : #3C3C3C;
-	padding: 0 10px;
 }
 
 ul#mainMenu li a:hover{

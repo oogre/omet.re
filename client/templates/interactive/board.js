@@ -4,7 +4,7 @@ Template.board.rendered = function(){
 	Session.set(Meteor.CREATED_NOTE, false);
 	//window.scrollTo((document.body.offsetWidth - window.innerWidth) / 2, (document.body.offsetHeight - window.innerHeight) / 2);
 
-	BCKSP.ES == BCKSP();
+	(!BCKSP.ES) && (BCKSP.ES = BCKSP());
 
 	clearTimeout(timer.helper);
 	timer.helper = setTimeout(function(){
